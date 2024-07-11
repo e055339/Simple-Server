@@ -3,7 +3,7 @@ name: Run tests on merge or PR to main
 on:
   push:
     branches:
-      - main
+      - develop
   pull_request:
     branches:
       - main
@@ -14,15 +14,22 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        run: |
+          mkdir temp
+          cd temp
+          git clone https://github.com/LilyLin395135/Simple-Server.git
+          cd Simple-Server
+          git checkout main
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '21'
+      - name: Change to server directory
+        run: cd /app/temp/Simple-Server/server
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          cd /app/temp/Simple-Server/server
+          npm install
 
       - name: Run tests
-        run: npm test
+        run: |
+          cd /app/temp/Simple-Server/server
+          npm test
