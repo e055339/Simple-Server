@@ -1,5 +1,5 @@
 name: Deploy to EC2 on merge
-'on':
+on:
   push:
     branches:
       - main
@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: deploy to ec2
-        script: |
+        run: |
           ssh -i ${secrets.EC2_SSH_KEY} ${secrets.EC2_USERNAME}@${secrets.HOST_DNS}
           echo "SSH connection successful!" > $HOME/deployment_test.txt
           cd ec2-user/Developer/Simple-Server/server
