@@ -11,24 +11,7 @@ jobs:
         script: |
           ssh -i ${secrets.EC2_SSH_KEY} ${secrets.EC2_USERNAME}@${secrets.HOST_DNS}
           echo "SSH connection successful!" > $HOME/deployment_test.txt
-          sudo DEBIAN_FRONTEND=noninteractive apt install -y debian-keyring debian-archive-keyring apt-transport-https curl
-          curl -1sLf "https://dl.cloudsmith.io/public/caddy/stable/gpg.key" | sudo gpg --dearmor --batch --yes -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
-          curl -1sLf "https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt" | sudo tee /etc/apt/sources.list.d/caddy-stable.list
-          sudo apt update
-          sudo DEBIAN_FRONTEND=noninteractive apt install -y caddy
-          echo ":80 {\n    reverse_proxy localhost:3000\n}" | sudo tee /etc/caddy/Caddyfile
-          sudo systemctl restart caddy
-          sudo apt update
-          sudo apt install -y curl
-          curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash -
-          sudo apt install -y nodejs
-          sudo apt install -y git
-          mkdir ec2-user
-          cd ec2-user/
-          mkdir Developer
-          cd Developer/
-          git clone https://github.com/LilyLin395135/Simple-Server.git
-          cd Simple-Server/server
+          cd ec2-user/Developer/Simple-Server/server
+          git pull https://github.com/LilyLin395135/Simple-Server.git
           npm install
-          sudo npm install pm2 -g
-          pm2 start server.js
+          pm2 restart all
