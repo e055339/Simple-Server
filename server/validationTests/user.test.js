@@ -3,11 +3,9 @@ import app from '../server.js';
 
 describe('User sign up', () => {
   it('email is required', async () => {
-    const response = await request(app)
-      .post('/api/user/signup')
-      .send({});
+    const response = await request(app).post('/api/user/signup').send({});
     expect(response.status).toBe(400);
-    const errors = response.body.errors.map(err => err.msg);
+    const errors = response.body.errors.map((err) => err.msg);
     expect(errors).toContain('email is required');
     expect(errors).toContain('password is required');
   });
@@ -22,11 +20,9 @@ describe('User sign up', () => {
 
 describe('User sign in', () => {
   it('email is required', async () => {
-    const response = await request(app)
-      .post('/api/user/signin')
-      .send({});
+    const response = await request(app).post('/api/user/signin').send({});
     expect(response.status).toBe(400);
-    const errors = response.body.errors.map(err => err.msg);
+    const errors = response.body.errors.map((err) => err.msg);
     expect(errors).toContain('email is required');
     expect(errors).toContain('password is required');
   });

@@ -1,61 +1,62 @@
-body, html {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    font-family: 'Arial', sans-serif;
-    background: #f4f4f4;
-    color: #333;
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Arial', sans-serif;
+  background: #f4f4f4;
+  color: #333;
 }
 
 .slider {
-    width: 80%;
-    margin: auto;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    border-radius: 10px;
-    position: relative;
-    top: 50px;
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  position: relative;
+  top: 50px;
 }
 
 .slides {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
+  display: flex;
+  transition: transform 0.5s ease-in-out;
 }
 
 .slides > div {
-    min-width: 100%;
-    box-sizing: border-box;
-    padding: 40px;
-    text-align: center;
-    background: white;
-    border-radius: 10px;
+  min-width: 100%;
+  box-sizing: border-box;
+  padding: 40px;
+  text-align: center;
+  background: white;
+  border-radius: 10px;
 }
 
 img {
-    width: 80%;
-    height: auto;
-    border-radius: 5px;
-    margin-bottom: 20px;
+  width: 80%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 20px;
 }
 
 p {
-    font-size: 1.2em;
-    line-height: 1.5;
-    color: #555;
+  font-size: 1.2em;
+  line-height: 1.5;
+  color: #555;
 }
 
 /* 簡單的按鈕和指示器風格 */
 button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #007BFF;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1em;
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
 }
 
 button:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
