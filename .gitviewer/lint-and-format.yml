@@ -1,15 +1,12 @@
-name: Run tests on merge or PR to main
+name: Lint and Format Check
 
-# on:
-#   push:
-#     branches:
-#       - develop
-#   pull_request:
-#     branches:
-#       - main
+on:
+  push:
+    branches:
+      - develop
 
 jobs:
-  run_tests:
+  lint-and-format:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,18 +16,19 @@ jobs:
           cd temp
           git clone https://github.com/LilyLin395135/Simple-Server.git
           cd Simple-Server
-          git checkout main
-
-      - name: Change to server directory
-        run: cd /app/temp/Simple-Server/server
+          git checkout develop
 
       - name: Install dependencies
         run: |
           cd /app/temp/Simple-Server/server
           npm install
 
-      - name: Run tests
+      - name: Run ESLint
         run: |
           cd /app/temp/Simple-Server/server
-          npm test
-          
+          npm run lint
+
+      - name: Run Prettier
+        run: |
+          cd /app/temp/Simple-Server/server
+          npm run format
